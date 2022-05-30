@@ -16,7 +16,7 @@ set $mod Mod4
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 # font pango:Cascadia Code 12
-font pango:System San Francisco Display 12
+font pango:Cascadia Code 12
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -34,6 +34,9 @@ bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
+
+# i3lock
+bindsym $mod+Shift+x i3lock -c 000000
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
@@ -171,16 +174,29 @@ bindsym $mod+r mode "resize"
 bar {
     # mode hide
     status_command i3status
-        
 }
 
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 5%-
-bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
 
+
+exec --no-startup-id picom -b
+exec --no-startup-id tmg
+exec --no-startup-id flameshot
+exec --no-startup-id unclutter -idle 0.01 -root &
+exec --no-startup-id xsetroot -solid "#333333"
+
+focus_follows_mouse no
+
+############################
+# Device Specific Settings #
+############################
+
+# For HP
+# bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 5%-
+# bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 5%+
+
+# For MAC
+bindsym XF86MonBrightnessUp exec --no-startup-id  "light -A 10"
+bindsym XF86MonBrightnessDown exec --no-startup-id "light -U 10"
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-"
-
-#exec --no-startup-id "compton --opengl --vsync opengl-swc --paint-on-overlay --backend xrender"
- exec --no-startup-id picom -b
-exec --no-startup-id "tmg"
-exec --no-startup-id "flameshot"
+exec xrandr --output eDP --mode 1920x1200
