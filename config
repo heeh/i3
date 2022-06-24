@@ -188,6 +188,8 @@ exec --no-startup-id xsetroot -solid "#333333"
 
 focus_follows_mouse no
 
+for_window [class=".*"] resize set width 33 ppt
+
 ############################
 # Device Specific Settings #
 ############################
