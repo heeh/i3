@@ -209,3 +209,6 @@ exec --no-startup-id tmg
 exec --no-startup-id flameshot
 
 exec --no-startup-id sudo modprobe -r bcm5974
+
+no_focus [all]
+focus_on_window_activation none
