@@ -191,24 +191,25 @@ focus_follows_mouse no
 
 for_window [class=".*"] resize set width 33 ppt
 
-############################
-# Device Specific Settings #
-############################
 
-# For HP
+
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl --min-val=2 -q set 3%-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl -q set 3%+
 bindsym XF86AudioRaiseVolume exec "amixer -D pulse sset Master 5%+"
 bindsym XF86AudioLowerVolume exec "amixer -D pulse sset Master 5%-"
-exec xrandr --output eDP --mode 1280x1024
-
 
 #exec --no-startup-id "compton --opengl --vsync opengl-swc --paint-on-overlay --backend xrender"
 exec --no-startup-id picom -b
 exec --no-startup-id tmg
 exec --no-startup-id flameshot
 
-exec --no-startup-id sudo modprobe -r bcm5974
-
 no_focus [all]
 focus_on_window_activation none
+
+############################
+# Device Specific Settings #
+############################
+# Mac
+#exec xrandr --output eDP --mode 1280x1024
+#exec --no-startup-id sudo modprobe -r bcm5974
+
