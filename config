@@ -210,6 +210,7 @@ focus_on_window_activation none
 # Device Specific Settings #
 ############################
 # Mac
-#exec xrandr --output eDP --mode 1280x1024
-#exec --no-startup-id sudo modprobe -r bcm5974
+exec xrandr --output eDP --mode 1280x1024
+exec --no-startup-id sudo modprobe -r bcm5974
 
+exec --no-startup-id /usr/bin/emacs --daemon && emacs
